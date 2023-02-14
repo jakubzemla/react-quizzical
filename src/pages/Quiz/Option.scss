@@ -1,0 +1,13 @@
+@import '../../styles/utilities/variables';
+
+.option {
+    padding: .5em 1em;
+    min-width: 10%;
+    width: max-content;
+    text-align: center;
+    border-radius: .5em;
+    cursor: pointer;
+    &:hover, &:active {
+        transform: scale(1.05)
+    }
+}

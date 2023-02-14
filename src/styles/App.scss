@@ -1,0 +1,14 @@
+@import '../styles/utilities/mixins';
+@import '../styles/utilities/variables';
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    @include flex-center;
+    flex-direction: column;
+    min-height: 500px;
+
+    .btn-primary {
+        @include btn-primary
+    }
+}

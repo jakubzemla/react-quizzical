@@ -1,0 +1,16 @@
+@import './utilities/variables';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+  background-image: url('../assets/images/blob2.png'), url('../assets/images/blob1.png');
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom left, top right;
+  font-family: 'Poppins', sans-serif;
+  color: $text-color;
+}
+

@@ -1,0 +1,16 @@
+@import '../../styles/utilities/variables';
+
+.question {
+    border-bottom: 2px solid $select-color;
+    padding-bottom: 2em;
+    &:last-child {
+        margin-bottom: 5em;
+    }
+
+    .answers-options {
+        list-style-type: none;
+        display: flex;
+        gap: 3%;
+        align-items: center;
+    }
+}
