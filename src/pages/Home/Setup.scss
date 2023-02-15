@@ -1,0 +1,21 @@
+@import '../../styles/utilities/variables';
+
+.setup-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 2em;
+    margin-bottom: 3em;
+    border-bottom: 2px solid $button-background;
+
+
+    .setting-options {
+        list-style-type: none;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1em; 
+        margin: 0;
+        padding: 0;
+    }
+}

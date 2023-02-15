@@ -11,4 +11,23 @@
     .btn-primary {
         @include btn-primary
     }
+
+    .setting-choice {
+        background-color: $button-background;
+        color: #fff;
+        border: none
+    }
+
+    .warning-info {
+        color: red;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: em(20);
+        margin-bottom: 0.5em;
+    }
+
+    .warning-info-instructions {
+        color: red;
+        margin-bottom: 0.5em;
+    }
 }

@@ -1,32 +1,30 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import randomNumber from '../../helpers/randomNumber'
 import Questions from './Questions'
 
-const Quiz = () => {
-    // const [api, setApi] = useState(`https://opentdb.com/api.php?amount=${randomNumber(5,15)}&type=multiple`)
-    const [api, setApi] = useState(`https://opentdb.com/api.php?amount=3&type=multiple`)
+const Quiz = (props) => {
+    const {category, questionsCount, difficulty} = props.apiSetup
+    const api = `https://opentdb.com/api.php?amount=${questionsCount}&category=${category}&difficulty=${difficulty}&type=multiple`
     const [data, setData] = useState([])
-
-    const categoriesApi = "https://opentdb.com/api_category.php"
-    const [categoriesData, setCategoriesData] = useState([])
 
     const [showAnswers, setShowAnswers] = useState(false)
     const [score, setScore] = useState(0)
     const [again, setAgain] = useState(false)
 
-    const handleAnswers = (optionInfo) => {
+    // Click event in Questions.jsx
+    const handleAnswers = () => {
         setShowAnswers(true)
         setAgain(true)
     }
 
+    // Used in OneQuestion.jsx
     const addPoint = () => {
         again && setScore(prevScore => prevScore + 1)
     }
 
+    // Click event in Questions.jsx
     const reset= () => {
         axios.get(api).then(response => setData(response.data.results))
-        axios.get(categoriesApi).then(response => setCategoriesData(response.data.trivia_categories))
         setShowAnswers(false)
         setAgain(false)
         setScore(0)
@@ -34,12 +32,11 @@ const Quiz = () => {
 
     useEffect(() => {
         axios.get(api).then(response => setData(response.data.results))
-        axios.get(categoriesApi).then(response => setCategoriesData(response.data.trivia_categories))
     }, [])
 
     return(
         <div className="container">
-            <Questions allQuestions={data} allCategories={categoriesData} reset={reset} again={again} handleAnswers={handleAnswers} showAnswers={showAnswers} score={score} addPoint={addPoint} />
+            <Questions allQuestions={data} reset={reset} handleAnswers={handleAnswers} showAnswers={showAnswers} score={score} addPoint={addPoint} handleNavigateToHome={props.handleNavigateToHome}/>
         </div>
     )
 }

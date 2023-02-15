@@ -1,3 +1,4 @@
+import './Questions.scss'
 import shuffle from '../../helpers/shuffleArray'
 import OneQuestion from "./OneQuestion"
 
@@ -34,20 +35,23 @@ const Questions = (props) => {
         difficulty: oneQuestion.difficulty,
     }))
 
-    const questionsList = allQuestions.map((question, index) => <OneQuestion key={index} question={question} optionStyles={optionsStyles} showAnswers={props.showAnswers} score={props.score} addPoint={props.addPoint} again={props.again} getPoints={props.getPoints}/>)
+    const questionsList = allQuestions.map((question, index) => <OneQuestion key={index} question={question} optionStyles={optionsStyles} showAnswers={props.showAnswers} addPoint={props.addPoint} />)
 
     return(
         <div className="questions-wrapper">
            {questionsList}
-           {props.showAnswers && <span className="points-info">{`You scored ${props.score}/${questionsList.length} correct answers`}</span>}
-           {props.showAnswers
-                ? <button className="btn-primary" onClick={props.reset}>Try Again</button>
+           <div className="results-info">
+            {props.showAnswers 
+                ? <>
+                <span className="points-info">{`You scored ${props.score}/${questionsList.length} correct answers`}</span>
+                <button className="btn-primary" onClick={props.reset}>Try Again</button>
+                <button className="btn-primary" onClick={props.handleNavigateToHome}>Go to Quiz settings</button>
+                </>
                 : <button className="btn-primary" onClick={props.handleAnswers}>Show answers</button>
-           }
+            }
+           </div>    
         </div>
-
-    )
-    
+    )  
 }
 
 export default Questions
