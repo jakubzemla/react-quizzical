@@ -5,7 +5,10 @@ import Setup from "./Setup"
 const Home = (props) => {
     const [omitted, setOmitted] = useState(false)
     const [omittedSettings, setOmittedSettings] = useState([])
-    const omittedToRender = omittedSettings.map((setting, index )=> <p key={index} className="warning-info-instructions">{`Please select ${setting}`}</p>) 
+    const omittedToRender = omittedSettings.map((setting, index) => <p key={index} className="warning-info-instructions">{
+        index !== 1 ? `Please select ${setting}` : `Please select count of questions`
+        }
+    </p>) 
 
     const navigate = useNavigate()
 
