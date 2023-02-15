@@ -6,7 +6,7 @@ const Home = (props) => {
     const [omitted, setOmitted] = useState(false)
     const [omittedSettings, setOmittedSettings] = useState([])
     const omittedToRender = omittedSettings.map((setting, index) => <p key={index} className="warning-info-instructions">{
-        index !== 1 ? `Please select ${setting}` : `Please select count of questions`
+        setting !== "questionsCount" ? `Please select ${setting}` : `Please select count of questions`
         }
     </p>) 
 
